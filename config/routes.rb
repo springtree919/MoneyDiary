@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get "/totaloutgo", to: "outgos#home"
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  
+  get "last_month", to: "static_pages#last_month"
 end

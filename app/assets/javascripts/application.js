@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require moment 
 //= require fullcalendar 
+//= require chartkick
+//= require Chart.bundle
 //= require_tree .
 
 
@@ -26,9 +28,9 @@ $(function () {
                 if(!event.calss && event.name == "income")
                   element.addClass("bluecolor");
                 else
-                  element.addClass("redcolor")
-      console.log(event)
+                  element.addClass("redcolor");
     }
   
 
-}); });
+}); 
+});

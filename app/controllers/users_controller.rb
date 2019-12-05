@@ -32,5 +32,3 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
 end
-class UsersController < ApplicationController
-end

@@ -1,2 +1,21 @@
-<h1>StaticPages#incomedetail</h1>
-<p>Find me in app/views/static_pages/incomedetail.html.erb</p>
+<div id="chart">
+  <h1>収入詳細</h1>
+  <h2><%= link_to "支出詳細をみる", outgodetail_path, class: "detail" %></h2>
+  
+  <div class="row-chart">
+    <div class="col-md-6">
+      <div class="circle">
+        <h3 class="chart-title">今月の費目別収入</h3>
+        <p><%= pie_chart @incomes %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="column">
+        <h3 class="chart-title">月別詳細</h3>
+        <p><%= column_chart @incomedata %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
