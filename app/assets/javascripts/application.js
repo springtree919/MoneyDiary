@@ -10,6 +10,25 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery 
 //= require rails-ujs
-//= require turbolinks
+//= require bootstrap
+//= require moment 
+//= require fullcalendar 
 //= require_tree .
+
+
+$(function () {
+  //JSON形式でオブジェクトの情報をindexに渡している
+  $('#calendar').fullCalendar({
+    events: '/index.json',
+    eventRender: function (event, element) {
+                if(!event.calss && event.name == "income")
+                  element.addClass("bluecolor");
+                else
+                  element.addClass("redcolor")
+      console.log(event)
+    }
+  
+
+}); });

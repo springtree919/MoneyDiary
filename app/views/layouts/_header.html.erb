@@ -1,0 +1,31 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li><%= link_to "Calendar", index_path  %></li>
+        <li><%= link_to "詳細",   '#' %></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              新規登録 <b class="caret"></b>
+            </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "収入登録", new_income_path %></li>
+            <li><%= link_to "支出登録", new_outgo_path %></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              収支記録 <b class="caret"></b>
+            </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "収入記録", totalincome_path %></li>
+            <li><%= link_to "支出記録", totaloutgo_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Log in", root_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

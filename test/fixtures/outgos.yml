@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  categories: MyString
+  memo: MyString
+  date: 2019-12-05 08:39:28
+  user_id: 1
+
+two:
+  amount: 1
+  categories: MyString
+  memo: MyString
+  date: 2019-12-05 08:39:28
+  user_id: 1

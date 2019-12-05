@@ -1,0 +1,5 @@
+<li>
+  <% only_date = outgo.date.to_date %> 
+  <p><%= only_date %>　　<%= outgo.amount%>円（<%= outgo.categories %>),
+  <%= outgo.memo %>　<%= link_to "編集", edit_outgo_path(outgo) %>　<%= link_to "削除", outgo_path(outgo), method: :delete, data: { confirm: 'よろしいですか？' } %></p>
+</li>

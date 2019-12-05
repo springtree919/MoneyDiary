@@ -1,0 +1,116 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "fullcalendar";
+
+/* 全体 */
+
+body {
+  padding-top: 60px;
+}
+
+/* 文字 */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+.hello {
+  font-size: 100px;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+.navbar-right {
+  padding-right: 30px;
+}
+
+/* forms */
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+label {
+  width: 100%;
+}
+
+input:last-child {
+  margin-top: 20px;
+}
+
+/* 収入記録 */
+
+.income li{
+  list-style: none;
+}
+
+/* 支出記録 */
+
+.outgo li{
+  list-style: none;
+}
+
+/* calendar */
+
+.blue {
+  display: inline;
+  background-color: #46EEFF;
+  color: black;
+}
+
+.red {
+  display: inline;
+  background-color: #FF9872;
+  color: black;
+}
+
+.redcolor {
+  background-color: #FF9872;
+  color: black;
+  font-weight: bold;
+}
+
+.bluecolor {
+  background-color: #46EEFF;
+  color: black;
+  font-weight: bold;
+}
+
+/* forms */
+
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}

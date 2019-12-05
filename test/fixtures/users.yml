@@ -1,0 +1,3 @@
+haruki:
+  email: springtree@icloud.com
+  password_digest: <%= User.digest('password') %>

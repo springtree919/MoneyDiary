@@ -1,0 +1,9 @@
+one:
+  amount: 1
+  categories: MyString
+  memo: MyString
+
+two:
+  amount: 1
+  categories: MyString
+  memo: MyString
