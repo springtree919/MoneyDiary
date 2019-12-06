@@ -1,0 +1,40 @@
+<div class="result">
+  <h1><%= @month.year %>年<%= @month.mon%>月の詳細</h1>
+  <div class="saving">
+    <p>この月の貯金額は</p><p><%= @incomes.select(:amount).sum(:amount) - @outgos.select(:amount).sum(:amount)%>円です</p>
+  </div>
+  <div class = "row">
+    <div class="col-md-6">
+      <h2 class="bluecolor">収入</h2>
+      <ul>
+        <% @incomes.each do |income| %>
+          <li><%= income.date.to_date %>　<%= income.categories %>/<%= income.memo %> 　<%= income.amount %>円
+          　<%= link_to "編集", edit_income_path(income), class: "green" %>　<%= link_to "削除", income_path(income), method: :delete, data: { confirm: 'よろしいですか？' }, class: "orange" %></li>
+        <% end %>
+        <li>合計　<%= @incomes.select(:amount).sum(:amount) %>円</li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h2 class="redcolor">支出</h2>
+      <ul>
+        <% @outgos.each do |outgo| %>
+          <li><%= outgo.date.to_date %>　<%= outgo.categories %>/<%= outgo.memo%>　<%= outgo.amount %>円
+          　<%= link_to "編集", edit_outgo_path(outgo), class: "green" %>　<%= link_to "削除", outgo_path(outgo), method: :delete, data: { confirm: 'よろしいですか？' }, class: "orange" %></li>
+        <% end %>
+        <li>合計　<%= @outgos.select(:amount).sum(:amount) %>円</li>
+      </ul>
+    </div>
+  </div>
+  <div class="piechart">
+    <div class="row">
+      <div class="col-md-6">
+         <p><%= pie_chart @incomedata %></p>
+      </div>
+      <div class="col-md-6">
+        <p><%= pie_chart @outgodata %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+

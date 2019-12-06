@@ -1,5 +1,5 @@
 <li>
-  <% only_date = income.date.to_date %> 
-  <p><%= only_date %>　　<%= income.amount%>円（<%= income.categories %>）
-  <%= income.memo %>　<%= link_to "編集", edit_income_path(income) %>　<%= link_to "削除", income_path(income), method: :delete, data: { confirm: 'よろしいですか？' } %></p>
+  <p><% only_date = income.date.to_date %>
+  <%= only_date %>　　<%= income.amount%>円（<%= income.categories %>）
+  <%= income.memo %>　<%= link_to "編集", edit_income_path(income), class: "green" %>　<%= link_to "削除", income_path(income), method: :delete, data: { confirm: 'よろしいですか？' }, class: "orange" %></p>
 </li>

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   root 'sessions#new'
   
   resources :users, only: [:new, :create]
-
+  get "/search", to: "static_pages#search"
+  get "/result", to: "static_pages#result"
   get '/incomedetail', to: 'static_pages#incomedetail'
 
   get '/outgodetail', to: 'static_pages#outgodetail'

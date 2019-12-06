@@ -1,0 +1,12 @@
+<div class="row search">
+  <h1>検索</h1>
+  <p class="description">月毎・日毎の収支履歴を調べることが出来ます</p>
+  <p class="description">※月毎で検索する際はその月の日を適当に入力してください</p>
+  <div class="form col-md-6 col-md-offset-3">
+    <%= form_tag(result_path,:method => 'get') do %>
+      <%= date_field_tag :search %>
+      <ul class="check"><li><%= check_box_tag :checkbox %>月ごとに検索</li></ul>
+      <%= submit_tag 'Search', :name => nil %>
+    <% end %>
+  </div>
+</div>

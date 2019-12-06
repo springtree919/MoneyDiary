@@ -64,12 +64,22 @@ input:last-child {
 
 .income li{
   list-style: none;
+  margin-bottom: 10px;
+}
+
+.record{
+  text-align: left;
+  margin-left: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 10px;
 }
 
 /* 支出記録 */
 
 .outgo li{
   list-style: none;
+  margin-bottom: 10px;
 }
 
 /* calendar */
@@ -127,4 +137,58 @@ input:last-child {
 
 .detail{
   float: right;
+  font-size: 30px;
+}
+
+/* result */
+
+.result{
+  h2{
+  font-size: 50px;
+  border-radius: 20px;
+  }
+  ul{
+    list-style: none;
+    li{
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+  }
+  .row{
+    overflow: hidden;
+  }
+}
+
+.orange{
+  color: orange;
+  &:hover{
+    color: black;
+  }
+}
+
+.green{
+  color: green;
+  &:hover{
+    color: black;
+  }
+}
+
+.saving p{
+  display: inline-block;
+  padding-left: 30px;
+  font-size: 30px;
+}
+
+/* search */
+
+.check{
+  list-style: none;
+  padding: 0;
+}
+.description{
+  text-align: center;
+}
+
+#checkbox{
+  width: 5%;
 }
