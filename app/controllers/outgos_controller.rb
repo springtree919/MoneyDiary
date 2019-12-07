@@ -2,7 +2,7 @@ class OutgosController < ApplicationController
   before_action :logged_in_user
   
   def home
-    @outgos = current_user.outgos.paginate(page: params[:page])
+    @outgos = current_user.outgos.paginate(page: params[:page]).order(date: "DESC")
   end
 
   def new

@@ -21,21 +21,29 @@ class StaticPagesController < ApplicationController
       render "day_result"
     end
   end
-  
-  def result_day
-  end
 
   def incomedetail
     @incomes = current_user.incomes.where(date: Time.current.all_month).group(:categories).sum(:amount)
-    @incomedata = current_user.incomes.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
+    @monthincomes = current_user.incomes.search_by_month(Time.current).order(date: "DESC")
   end
 
   def outgodetail
     @outgos = current_user.outgos.where(date: Time.current.all_month).group(:categories).sum(:amount)
-    @outgodata = current_user.outgos.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
+    @monthoutgos = current_user.outgos.search_by_month(Time.current).order(date: "DESC")
   end
   
-  def last_month
-    @incomes = current_user.incomes.where(date: Time.current.prev_month.all_month).group(:categories).sum(:amount)
+  def total
+    @incomes = current_user.incomes.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
+    @outgos = current_user.outgos.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
+    @incomedata = current_user.incomes.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
+    @outgodata = current_user.outgos.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
+    
+    @outgos.each do |date, amount| 
+      if !@total
+        @total = {}
+      end
+      @total[date] = (-amount)
+    end
+    @dif = @incomes.merge(@total){|date, amount1, amount2| amount1 + amount2}
   end
 end

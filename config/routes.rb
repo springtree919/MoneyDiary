@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   
-  get "last_month", to: "static_pages#last_month"
+  get "total", to: "static_pages#total"
 end

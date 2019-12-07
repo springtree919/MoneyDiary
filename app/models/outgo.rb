@@ -18,4 +18,5 @@ class Outgo < ApplicationRecord
         Outgo.all
       end
   end
+
 end

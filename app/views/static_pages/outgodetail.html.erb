@@ -10,10 +10,14 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="column">
-        <h3 class="chart-title">月別詳細</h3>
-        <p><%= column_chart @outgodata %></p>
-      </div>
+      <h2 class="redcolor title">履歴</h2>
+      <ul class="history">
+        <% @monthoutgos.each do |outgo| %>
+          <li><%= outgo.date.to_date %>　<%= outgo.categories %>/<%= outgo.memo %> 　<%= outgo.amount %>円
+          　<%= link_to "編集", edit_outgo_path(outgo), class: "green" %>　<%= link_to "削除", outgo_path(outgo), method: :delete, data: { confirm: 'よろしいですか？' }, class: "orange" %></li>
+        <% end %>
+        <li>合計　<%= @monthoutgos.select(:amount).sum(:amount) %>円</li>
+      </ul>
     </div>
   </div>
 </div>

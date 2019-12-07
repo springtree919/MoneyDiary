@@ -1,0 +1,17 @@
+<div class="savings">
+  <h1 class>今年の詳細</h1>
+  <div class="total">
+    <h3>貯金額の推移</h3>
+    <%= line_chart @dif, colors: ["#FF44FF"] %>
+  </div>
+  <div class="row">
+    <div class="column col-md-6">
+      <h3 class="chart-title">収入月別詳細</h3>
+      <p><%= column_chart @incomedata, id: "users-chart", width: "350px", height: "250px", colors: ["#46EEFF"] %></p>
+    </div>
+    <div class="column col-md-6">
+      <h3 class="chart-title">支出月別詳細</h3>
+      <p><%= column_chart @outgodata, id: "chart", width: "350px", height: "250px", colors: ["#FF8856"] %></p>
+    </div>
+  </div>
+</div>
