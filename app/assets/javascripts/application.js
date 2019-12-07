@@ -38,6 +38,5 @@ $(function () {
         // 曜日略称
     dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
     firstDay : 1,
-    
 }); 
 });
