@@ -33,8 +33,8 @@ class StaticPagesController < ApplicationController
   end
   
   def total
-    @incomes = current_user.incomes.year(Time.current) #円グラフにする
-    @outgos = current_user.outgos.year(Time.current)   #円グラフにする
+    @incomes = current_user.incomes.year(Time.current) #円グラフ
+    @outgos = current_user.outgos.year(Time.current)   #円グラフ
 
     #月ごとの支出の値を負の数にする
     @outgos.each do |date, amount| 
