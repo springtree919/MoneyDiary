@@ -4,7 +4,7 @@ class Outgo < ApplicationRecord
   validates :categories, presence: true
   
   def self.search_by_day(search)
-    if !search.empty?
+    if search
       Outgo.where(date: search.in_time_zone.all_day)
     else       
       Outgo.all
@@ -12,7 +12,7 @@ class Outgo < ApplicationRecord
   end
   
   def self.search_by_month(search)
-    if !search.empty?
+    if search
       Outgo.where(date: search.in_time_zone.all_month)
     else
       Outgo.all
@@ -20,7 +20,7 @@ class Outgo < ApplicationRecord
   end
   
   def self.search_by_year(search)
-    if !search.empty?
+    if search
       Outgo.where(date: search.in_time_zone.all_year)
     else
       Outgo.all
