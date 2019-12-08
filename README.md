@@ -1,24 +1,23 @@
-# README
+# MoneyDiary
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+you can keep your household accounts.
+This is an application maked by only one week.
 
-Things you may want to cover:
 
-* Ruby version
+# Features
 
-* System dependencies
+MoneyDiary has many graphs, so you can see your saving easily.
 
-* Configuration
+# URL
+https://moneydiary.herokuapp.com/
 
-* Database creation
 
-* Database initialization
+# Author
 
-* How to run the test suite
+ Haruki Hayashi
+ springtree919@icloud.com
 
-* Services (job queues, cache servers, search engines, etc.)
+# License
 
-* Deployment instructions
+"Microblog" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
-* ...

@@ -1,5 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <nav>
+    <h1 class="diary">家計簿</h1>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li><%= link_to "Calendar", index_path  %></li>
@@ -26,7 +27,7 @@
         </li>
         <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to "Log in", root_path %></li>
+        <li><%= link_to "ログイン", root_path %></li>
       <% end %>
     </ul>
   </nav>
