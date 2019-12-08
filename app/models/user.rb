@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :incomes
   has_many :outgos
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :reset_token
   before_save { email.downcase! }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255}, format: { with: VALID_EMAIL_REGEX }, uniqueness: {case_sensitive: false} #文字の大小を区別しない
@@ -35,5 +35,19 @@ class User < ApplicationRecord
   #tokenを削除
   def forget
     update_attribute(:remember_digest, nil)
+  end
+  
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+  
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+  
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 end
