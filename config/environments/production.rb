@@ -31,6 +31,7 @@ Rails.application.configure do
   config.assets.compile = true
   
   
+  
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'protected-woodland-89915.herokuapp.com'
