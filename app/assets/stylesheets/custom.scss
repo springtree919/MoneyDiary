@@ -60,6 +60,10 @@ input:last-child {
   margin-top: 20px;
 }
 
+.login label{
+  display: inline;
+}
+
 /* 収入記録 */
 
 .income li{
@@ -220,3 +224,4 @@ input:last-child {
 #checkbox{
   width: 5%;
 }
+

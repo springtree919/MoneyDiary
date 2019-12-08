@@ -6,7 +6,7 @@
     <%= form_tag(result_path,:method => 'get') do %>
       <%= date_field_tag :search %>
       <ul class="check"><li><%= check_box_tag :checkbox %>月ごとに検索</li></ul>
-      <%= submit_tag 'Search', :name => nil %>
+      <%= submit_tag '検索', :name => nil %>
     <% end %>
   </div>
 </div>
