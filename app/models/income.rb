@@ -6,7 +6,7 @@ class Income < ApplicationRecord
   
   
   def self.search_by_day(search)
-    if search
+    if !search.empty?
       Income.where(date: search.in_time_zone.all_day)
     else
       Income.all
@@ -14,7 +14,7 @@ class Income < ApplicationRecord
   end
   
   def self.search_by_month(search)
-    if search        
+    if !search.empty?
       Income.where(date: search.in_time_zone.all_month)
     else
       Income.all
@@ -22,7 +22,7 @@ class Income < ApplicationRecord
   end
   
   def self.search_by_year(search)
-    if search
+    if !search.empty?
       Income.where(date: search.in_time_zone.all_year)
     else
       Income.all

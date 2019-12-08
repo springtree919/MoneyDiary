@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   end
   
   def result
-    if params[:search] == nil
+    if params[:search].empty?
       flash.now[:danger] ="検索に失敗しました"
       render "search"
     elsif params[:checkbox] == "1" #月ごとに検索
