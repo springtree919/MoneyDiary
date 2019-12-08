@@ -11,6 +11,11 @@ MoneyDiary has many graphs, so you can see your saving easily.
 # URL
 https://moneydiary.herokuapp.com/
 
+# Sample User
+
+email: User@example.com
+password: password
+
 
 # Author
 
