@@ -4,7 +4,7 @@
   <p class="description">※月毎で検索する際はその月の日を適当に入力してください</p>
   <div class="form col-md-6 col-md-offset-3">
     <%= form_tag(result_path,:method => 'get') do %>
-      <%= date_field_tag :search, placeholder: "例) 12/2 " %>
+      <%= date_field_tag :search%>
       <ul class="check"><li><%= check_box_tag :checkbox %>月ごとに検索</li></ul>
       <%= submit_tag '検索', :name => nil %>
     <% end %>
