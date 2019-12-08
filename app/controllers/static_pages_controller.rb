@@ -11,9 +11,9 @@ class StaticPagesController < ApplicationController
     elsif params[:checkbox] == "1"
       @month = params[:search].in_time_zone
       @incomes = current_user.incomes.search_by_month(params[:search])
-      @incomedata = current_user.incomes.search_by_month(params[:search]).group(:categories).sum(:amount)
+      @incomechart = current_user.incomes.month_category(params[:search])
       @outgos = current_user.outgos.search_by_month(params[:search])
-      @outgodata = current_user.outgos.search_by_month(params[:search]).group(:categories).sum(:amount)
+      @outgochart = current_user.outgos.month_category(params[:search])
     else
       @month = params[:search].in_time_zone
       @incomes = current_user.incomes.search_by_day(params[:search])
@@ -23,12 +23,12 @@ class StaticPagesController < ApplicationController
   end
 
   def incomedetail
-    @incomes = current_user.incomes.where(date: Time.current.all_month).group(:categories).sum(:amount)
+    @incomes = current_user.incomes.month_category(Time.current)
     @monthincomes = current_user.incomes.search_by_month(Time.current).order(date: "DESC")
   end
 
   def outgodetail
-    @outgos = current_user.outgos.where(date: Time.current.all_month).group(:categories).sum(:amount)
+    @outgos = current_user.outgos.month_category(Time.current)
     @monthoutgos = current_user.outgos.search_by_month(Time.current).order(date: "DESC")
   end
   

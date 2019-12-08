@@ -4,19 +4,23 @@ class Outgo < ApplicationRecord
   validates :categories, presence: true
   
   def self.search_by_day(search)
-      if search
-        Outgo.where(date: search.in_time_zone.all_day)
-      else
-        Outgo.all
-      end
+    if search
+      Outgo.where(date: search.in_time_zone.all_day)
+    else       
+      Outgo.all
+    end
   end
   
   def self.search_by_month(search)
-      if search
-        Outgo.where(date: search.in_time_zone.all_month)
-      else
-        Outgo.all
-      end
+    if search
+      Outgo.where(date: search.in_time_zone.all_month)
+    else
+      Outgo.all
+    end
+  end
+  
+  def self.month_category(search)
+    Outgo.search_by_month(search).group(:categories).sum(:amount)
   end
 
 end

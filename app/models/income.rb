@@ -4,18 +4,22 @@ class Income < ApplicationRecord
   validates :categories, presence: true
   
   def self.search_by_day(search)
-      if search
-        Income.where(date: search.in_time_zone.all_day)
-      else
-        Income.all
-      end
+    if search
+      Income.where(date: search.in_time_zone.all_day)
+    else
+      Income.all
+    end
   end
   
   def self.search_by_month(search)
-      if search
-        Income.where(date: search.in_time_zone.all_month)
-      else
-        Income.all
-      end
+    if search        
+      Income.where(date: search.in_time_zone.all_month)
+    else
+      Income.all
+    end
+  end
+  
+  def self.month_category(search)
+    Income.search_by_month(search).group(:categories).sum(:amount)
   end
 end
