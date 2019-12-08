@@ -8,42 +8,42 @@ class StaticPagesController < ApplicationController
     if params[:search] == nil
       flash.now[:danger] ="検索に失敗しました"
       render "search"
-    elsif params[:checkbox] == "1"
+    elsif params[:checkbox] == "1" #月ごとに検索
       @month = params[:search].in_time_zone
-      @incomes = current_user.incomes.search_by_month(params[:search])
-      @incomechart = current_user.incomes.month_category(params[:search])
-      @outgos = current_user.outgos.search_by_month(params[:search])
-      @outgochart = current_user.outgos.month_category(params[:search])
+      @incomes = current_user.incomes.search_by_month(params[:search])    #検索された月の履歴
+      @incomechart = current_user.incomes.month_category(params[:search]) #検索された月の円グラフ
+      @outgos = current_user.outgos.search_by_month(params[:search])      #検索された月の履歴
+      @outgochart = current_user.outgos.month_category(params[:search])   #検索された月の円グラフ
     else
       @month = params[:search].in_time_zone
-      @incomes = current_user.incomes.search_by_day(params[:search])
-      @outgos = current_user.outgos.search_by_day(params[:search])
+      @incomes = current_user.incomes.search_by_day(params[:search])  #日単位での検索の履歴
+      @outgos = current_user.outgos.search_by_day(params[:search])    #上に同じ
       render "day_result"
     end
   end
 
-  def incomedetail
-    @incomes = current_user.incomes.month_category(Time.current)
-    @monthincomes = current_user.incomes.search_by_month(Time.current).order(date: "DESC")
+  def incomedetail  #今月の収入詳細
+    @incomechart = current_user.incomes.month_category(Time.current)
+    @incomes = current_user.incomes.search_by_month(Time.current).order(date: "DESC")
   end
 
-  def outgodetail
-    @outgos = current_user.outgos.month_category(Time.current)
-    @monthoutgos = current_user.outgos.search_by_month(Time.current).order(date: "DESC")
+  def outgodetail   #今月の支出詳細
+    @outgochart = current_user.outgos.month_category(Time.current)
+    @outgos = current_user.outgos.search_by_month(Time.current).order(date: "DESC")
   end
   
   def total
-    @incomes = current_user.incomes.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
-    @outgos = current_user.outgos.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
-    @incomedata = current_user.incomes.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
-    @outgodata = current_user.outgos.where(date: Time.current.all_year).group_by_month(:date).sum(:amount)
-    
+    @incomes = current_user.incomes.year(Time.current) #円グラフにする
+    @outgos = current_user.outgos.year(Time.current)   #円グラフにする
+
+    #月ごとの支出の値を負の数にする
     @outgos.each do |date, amount| 
       if !@total
         @total = {}
       end
       @total[date] = (-amount)
     end
-    @dif = @incomes.merge(@total){|date, amount1, amount2| amount1 + amount2}
+    #収入+ 支出をして貯金額を出している
+    @line = @incomes.merge(@total){|date, income, outgo| income + outgo}
   end
 end

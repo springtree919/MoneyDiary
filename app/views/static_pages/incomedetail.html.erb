@@ -6,17 +6,17 @@
     <div class="col-md-6">
       <div class="circle">
         <h3 class="chart-title">今月の費目別収入</h3>
-        <p><%= pie_chart @incomes %></p>
+        <p><%= pie_chart @incomechart %></p>
       </div>
     </div>
     <div class="col-md-6">
       <h2 class="bluecolor title">履歴</h2>
       <ul class="history">
-        <% @monthincomes.each do |income| %>
+        <% @incomes.each do |income| %>
           <li><%= income.date.to_date %>　<%= income.categories %>/<%= income.memo %> 　<%= income.amount %>円
           　<%= link_to "編集", edit_income_path(income), class: "green" %>　<%= link_to "削除", income_path(income), method: :delete, data: { confirm: 'よろしいですか？' }, class: "orange" %></li>
         <% end %>
-        <li>合計　<%= @monthincomes.select(:amount).sum(:amount) %>円</li>
+        <li>合計　<%= @incomes.select(:amount).sum(:amount) %>円</li>
       </ul>
     </div>
   </div>

@@ -19,8 +19,20 @@ class Outgo < ApplicationRecord
     end
   end
   
+  def self.search_by_year(search)
+    if search
+      Outgo.where(date: search.in_time_zone.all_year)
+    else
+      Outgo.all
+    end
+  end
+  
   def self.month_category(search)
     Outgo.search_by_month(search).group(:categories).sum(:amount)
+  end
+  
+  def self.year(search)
+    Outgo.search_by_year(search).group_by_month(:date).sum(:amount)
   end
 
 end

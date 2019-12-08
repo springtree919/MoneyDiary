@@ -6,17 +6,17 @@
     <div class="col-md-6">
       <div class="circle">
         <h3 class="chart-title">今月の費目別支出</h3>
-        <p><%= pie_chart @outgos %></p>
+        <p><%= pie_chart @outgochart %></p>
       </div>
     </div>
     <div class="col-md-6">
       <h2 class="redcolor title">履歴</h2>
       <ul class="history">
-        <% @monthoutgos.each do |outgo| %>
+        <% @outgos.each do |outgo| %>
           <li><%= outgo.date.to_date %>　<%= outgo.categories %>/<%= outgo.memo %> 　<%= outgo.amount %>円
           　<%= link_to "編集", edit_outgo_path(outgo), class: "green" %>　<%= link_to "削除", outgo_path(outgo), method: :delete, data: { confirm: 'よろしいですか？' }, class: "orange" %></li>
         <% end %>
-        <li>合計　<%= @monthoutgos.select(:amount).sum(:amount) %>円</li>
+        <li>合計　<%= @outgos.select(:amount).sum(:amount) %>円</li>
       </ul>
     </div>
   </div>
